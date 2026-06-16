@@ -3,6 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { hitungFPB, hitungKPK, buatFaktorisasiPrima, formatTampilanFaktor } from './mathFunctions';
 import './style.css';
 
+// --- IMPORT GAMBAR PROFIL ---
+// Pastikan gambar AnandaPrasetiyo.png dan dosen.png sudah ada di dalam folder src/assets/
+import fotoAnanda from './assets/AnandaPrasetiyo.png';
+import fotoDosen from './assets/dosen.png';
+
 // --- KOMPONEN POP-UP (MODAL) ---
 const Modal = ({ isOpen, onClose, title, children }) => {
     if (!isOpen) return null;
@@ -269,7 +274,6 @@ const SeksiQuiz = () => {
 };
 
 // --- SEKSI PROFIL ---
-// --- SEKSI PROFIL ---
 const SeksiProfil = () => {
     return (
         <section className="seksi-konten">
@@ -280,13 +284,11 @@ const SeksiProfil = () => {
                 {/* Profil Kamu (Pengembang) */}
                 <div className="kartu-profil">
                     <div className="bingkai-foto-profil">
-                        {/* Ganti URL di bawah dengan link foto aslimu */}
-                        <img src="https://via.placeholder.com/150/4caf50/ffffff?text=Foto+Kamu" alt="Profil Pengembang" />
+                        {/* Menggunakan variabel fotoAnanda hasil import */}
+                        <img src={AnandaPrasetiyo.png} alt="Profil Pengembang" />
                     </div>
                     <div className="info-profil">
                         <h3>Ananda Prasetiyo</h3>
-                        {/* Ini adalah tempat untuk menaruh NIM kamu */}
-                        <p className="nim-profil">NIM: Masukkan_NIM_Kamu_Di_Sini</p>
                         <p className="peran-profil">Pengembang Aplikasi & Mahasiswa</p>
                         <p className="deskripsi-profil">Bertanggung jawab merancang antarmuka interaktif dan algoritma FPB/KPK berbasis pendidikan lingkungan hidup untuk meningkatkan kualitas pembelajaran matematika di tingkat SMP.</p>
                     </div>
@@ -295,13 +297,11 @@ const SeksiProfil = () => {
                 {/* Profil Dosen Pengampu */}
                 <div className="kartu-profil">
                     <div className="bingkai-foto-profil">
-                        {/* Ganti URL di bawah dengan link foto dosenmu */}
-                        <img src="https://via.placeholder.com/150/2e7d32/ffffff?text=Foto+Dosen" alt="Profil Dosen" />
+                        {/* Menggunakan variabel fotoDosen hasil import */}
+                        <img src={dosen.png} alt="Profil Dosen" />
                     </div>
                     <div className="info-profil">
                         <h3>[Nama Dosen Pengampu]</h3>
-                        {/* Ini adalah tempat untuk menaruh NIP/NIDN Dosen kamu (Opsional) */}
-                        <p className="nim-profil">NIP/NIDN: Masukkan_NIP_Dosen</p>
                         <p className="peran-profil">Dosen Pengampu Mata Kuliah</p>
                         <p className="deskripsi-profil">Memberikan bimbingan, validasi materi pedagogik, serta arahan akademis dalam pengembangan proyek akhir teknologi pembelajaran ini.</p>
                     </div>
