@@ -21,19 +21,40 @@ const Modal = ({ isOpen, onClose, title, children }) => {
     );
 };
 
-// --- KOMPONEN NAVBAR ---
+// --- KOMPONEN NAVBAR DENGAN HAMBURGER MENU ---
 const Navbar = ({ tabAktif, setTabAktif, bukaPetunjuk, bukaTujuan }) => {
     const daftarMenu = ['Home', 'Materi', 'Vidio', 'Game', 'Quiz'];
+    const [isMenuTerbuka, setIsMenuTerbuka] = useState(false);
+
+    const navigasiKe = (menu) => {
+        setTabAktif(menu);
+        setIsMenuTerbuka(false); // Tutup menu otomatis setelah klik di mobile
+    };
+
     return (
         <nav className="navbar">
             <div className="navbar-identitas">🌿 EcoMath SMP</div>
-            <ul className="navbar-menu">
+            
+            {/* Tombol Hamburger - Hanya muncul di Layar HP */}
+            <button className="hamburger-tombol" onClick={() => setIsMenuTerbuka(!isMenuTerbuka)}>
+                {isMenuTerbuka ? '✕' : '☰'}
+            </button>
+
+            {/* Menu Navigasi Adaptif */}
+            <ul className={`navbar-menu ${isMenuTerbuka ? 'buka' : ''}`}>
                 {daftarMenu.map(menu => (
-                    <li key={menu} className={`navbar-item ${tabAktif === menu ? 'aktif' : ''}`} onClick={() => setTabAktif(menu)}>
+                    <li key={menu} className={`navbar-item ${tabAktif === menu ? 'aktif' : ''}`} onClick={() => navigasiKe(menu)}>
                         {menu}
                     </li>
                 ))}
+                {/* Tombol Info Tambahan di dalam list menu saat layar kecil */}
+                <li className="navbar-item-aksi-mobile">
+                    <button className="tombol-info" onClick={() => { bukaPetunjuk(); setIsMenuTerbuka(false); }}>📋 Petunjuk</button>
+                    <button className="tombol-info" onClick={() => { bukaTujuan(); setIsMenuTerbuka(false); }}>🎯 Tujuan</button>
+                </li>
             </ul>
+
+            {/* Tombol Aksi Kanan - Tersembunyi otomatis di layar HP */}
             <div className="navbar-aksi">
                 <button className="tombol-info" onClick={bukaPetunjuk}>📋 Petunjuk</button>
                 <button className="tombol-info" onClick={bukaTujuan}>🎯 Tujuan</button>
@@ -46,7 +67,7 @@ const Navbar = ({ tabAktif, setTabAktif, bukaPetunjuk, bukaTujuan }) => {
 const SeksiHome = ({ bukaPetunjuk, bukaTujuan }) => (
     <section className="seksi-konten">
         <div className="spanduk-pahlawan">
-            <h1>Misi Konservasi Bumi</h1>
+            <h1>Misi Conservation Bumi</h1>
             <p>Kuasai KPK dan FPB untuk membantu merencanakan pelestarian alam dan penjadwalan reboisasi.</p>
             <div className="grup-tombol-home">
                 <button className="tombol-aksen" onClick={bukaPetunjuk}>Baca Petunjuk Penggunaan</button>
@@ -66,7 +87,7 @@ const SeksiHome = ({ bukaPetunjuk, bukaTujuan }) => (
     </section>
 );
 
-// --- SEKSI MATERI & SIMULASI ---
+// --- SEKSI MATERI (DENGAN PENJELASAN KONSEP & TEMPAT FLIPBOOK) ---
 const SeksiMateri = () => {
     const [angkaSatu, setAngkaSatu] = useState('');
     const [angkaDua, setAngkaDua] = useState('');
@@ -87,7 +108,37 @@ const SeksiMateri = () => {
 
     return (
         <section className="seksi-konten">
-            <h2>Materi: Simulasi Pohon Faktor & Aritmetika</h2>
+            <h2>Materi Pembelajaran: KPK & FPB</h2>
+            
+            {/* Penjelasan Ringkas Materi */}
+            <div className="artikel-materi">
+                <div className="blok-bacaan">
+                    <h3>1. Faktor Persekutuan Terbesar (FPB)</h3>
+                    <p>FPB adalah bilangan bulat positif terbesar yang dapat membagi habis dua bilangan atau lebih tanpa sisa. Dalam pelestarian lingkungan, FPB sangat berguna untuk membagi sekumpulan bibit tanaman ke berbagai wilayah panti alam secara adil dan merata.</p>
+                </div>
+                <div className="blok-bacaan">
+                    <h3>2. Kelipatan Persekutuan Terkecil (KPK)</h3>
+                    <p>KPK adalah bilangan kelipatan terkecil yang sama dari dua bilangan atau lebih. Konsep ini digunakan di dunia nyata untuk menentukan waktu pertemuan berkala, seperti menentukan kapan tim patroli hutan dan pelacak satwa liar akan berpapasan kembali di posko yang sama.</p>
+                </div>
+            </div>
+
+            {/* TEMPAT UNTUK MENARUH FLIPBOOK KAMU */}
+            <div className="kontainer-flipbook">
+                <h3>📚 E-Book / Flipbook Interaktif</h3>
+                <p>Silakan baca buku modul digital di bawah ini untuk pemahaman konsep matematika yang lebih mendalam:</p>
+                <div className="bingkai-flipbook-wrapper">
+                    {/* Kamu tinggal mengganti src di bawah ini dengan URL link flipbook milikmu (misal dari AnyFlip, Heyzine, FlipHTML5, dll) */}
+                    <iframe 
+                        src="https://online.fliphtml5.com/anandapras25/Buku_Ajar_KPK_FPB_Lingkungan/#p=6" 
+                        title="Flipbook Matematika EcoMath"
+                        className="iframe-flipbook"
+                        allowFullScreen={true}
+                    ></iframe>
+                </div>
+            </div>
+
+            {/* Alat Simulasi Pohon Faktor */}
+            <h3 style={{ marginTop: '2.5rem', color: 'var(--hijau-utama)' }}>🧮 Alat Analisis & Simulasi Angka</h3>
             <div className="panel-kalkulator">
                 <input type="number" placeholder="Angka Pertama" value={angkaSatu} onChange={e => setAngkaSatu(e.target.value)} />
                 <input type="number" placeholder="Angka Kedua" value={angkaDua} onChange={e => setAngkaDua(e.target.value)} />
@@ -136,7 +187,6 @@ const SeksiGame = () => {
                 <div className="ikon-game-besar">🎮</div>
                 <h3>Siap Memulai Petualangan Lingkungan?</h3>
                 <p>Kamu akan diarahkan ke halaman game interaktif eksternal untuk menguji pemahaman KPK & FPB dalam pelestarian hutan.</p>
-                {/* SILAKAN MASUKKAN LINK GAME KAMU DI MASING-MASING HREF DI BAWAH INI */}
                 <a href="https://GANTI_DENGAN_LINK_GAME_KAMU.com" target="_blank" rel="noopener noreferrer" className="tombol-game-link">
                     Mainkan Game Sekarang 🚀
                 </a>
@@ -228,7 +278,7 @@ export default function App() {
             <Modal isOpen={isPetunjukOpen} onClose={() => setIsPetunjukOpen(false)} title="📋 Petunjuk Penggunaan Aplikasi">
                 <ol style={{ paddingLeft: '1.2rem', lineHeight: '1.8' }}>
                     <li>Gunakan <b>Navbar (Menu Navigasi)</b> di bagian atas untuk berpindah halaman sesuai keinginanmu.</li>
-                    <li>Di halaman <b>Materi</b>, masukkan dua angka bulat positif untuk melihat simulasi Pohon Faktor secara otomatis.</li>
+                    <li>Di halaman <b>Materi</b>, baca ringkasan penjelasan serta flipbook digital. Masukkan dua angka di bagian bawah untuk melihat simulasi Pohon Faktor secara otomatis.</li>
                     <li>Halaman <b>Vidio</b> berisi kumpulan materi visual, klik video untuk mulai menonton.</li>
                     <li>Buka menu <b>Game</b> untuk mengakses tautan luar permainan konservasi alam.</li>
                     <li>Uji kemampuanmu secara menyeluruh di menu <b>Quiz</b> dengan memilih salah satu jawaban yang paling tepat.</li>
