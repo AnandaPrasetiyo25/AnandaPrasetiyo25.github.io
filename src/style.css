@@ -360,3 +360,17 @@ input[type="number"]:focus { border-color: var(--hijau-muda); outline: none; }
     margin-top: 2.5rem;
     color: var(--hijau-utama);
 }
+
+/* Gaya khusus untuk NIM/NIP pada profil */
+.nim-profil {
+    font-size: 1rem;
+    color: var(--hijau-utama);
+    margin-bottom: 1rem;
+    font-family: monospace; /* Menggunakan font bergaya mesin tik/kode agar terlihat resmi */
+    background-color: #e8f5e9;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    display: inline-block;
+    border: 1px solid #c8e6c9;
+    font-weight: bold;
+}

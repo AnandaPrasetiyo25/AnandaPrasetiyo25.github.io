@@ -269,6 +269,7 @@ const SeksiQuiz = () => {
 };
 
 // --- SEKSI PROFIL ---
+// --- SEKSI PROFIL ---
 const SeksiProfil = () => {
     return (
         <section className="seksi-konten">
@@ -276,23 +277,31 @@ const SeksiProfil = () => {
             <p className="sub-judul">Tim di balik pengembangan aplikasi EcoMath SMP</p>
             
             <div className="grid-profil">
+                {/* Profil Kamu (Pengembang) */}
                 <div className="kartu-profil">
                     <div className="bingkai-foto-profil">
+                        {/* Ganti URL di bawah dengan link foto aslimu */}
                         <img src="https://via.placeholder.com/150/4caf50/ffffff?text=Foto+Kamu" alt="Profil Pengembang" />
                     </div>
                     <div className="info-profil">
                         <h3>Ananda Prasetiyo</h3>
+                        {/* Ini adalah tempat untuk menaruh NIM kamu */}
+                        <p className="nim-profil">NIM: Masukkan_NIM_Kamu_Di_Sini</p>
                         <p className="peran-profil">Pengembang Aplikasi & Mahasiswa</p>
                         <p className="deskripsi-profil">Bertanggung jawab merancang antarmuka interaktif dan algoritma FPB/KPK berbasis pendidikan lingkungan hidup untuk meningkatkan kualitas pembelajaran matematika di tingkat SMP.</p>
                     </div>
                 </div>
 
+                {/* Profil Dosen Pengampu */}
                 <div className="kartu-profil">
                     <div className="bingkai-foto-profil">
+                        {/* Ganti URL di bawah dengan link foto dosenmu */}
                         <img src="https://via.placeholder.com/150/2e7d32/ffffff?text=Foto+Dosen" alt="Profil Dosen" />
                     </div>
                     <div className="info-profil">
                         <h3>[Nama Dosen Pengampu]</h3>
+                        {/* Ini adalah tempat untuk menaruh NIP/NIDN Dosen kamu (Opsional) */}
+                        <p className="nim-profil">NIP/NIDN: Masukkan_NIP_Dosen</p>
                         <p className="peran-profil">Dosen Pengampu Mata Kuliah</p>
                         <p className="deskripsi-profil">Memberikan bimbingan, validasi materi pedagogik, serta arahan akademis dalam pengembangan proyek akhir teknologi pembelajaran ini.</p>
                     </div>
