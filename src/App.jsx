@@ -125,7 +125,7 @@ const SeksiMateri = () => {
                 <h3>📚 E-Book / Flipbook Interaktif</h3>
                 <p>Silakan baca buku modul digital di bawah ini:</p>
                 <div className="bingkai-flipbook-wrapper">
-                    <iframe src="https://heyzine.com/flip-book/embed-placeholder-link" title="Flipbook Matematika EcoMath" className="iframe-flipbook" allowFullScreen={true}></iframe>
+                    <iframe src="https://heyzine.com/flip-book/df60430145.html" title="Flipbook Matematika EcoMath" className="iframe-flipbook" allowFullScreen={true}></iframe>
                 </div>
             </div>
 
@@ -285,7 +285,7 @@ const SeksiProfil = () => {
                 <div className="kartu-profil">
                     <div className="bingkai-foto-profil">
                         {/* Menggunakan variabel fotoAnanda hasil import */}
-                        <img src={AnandaPrasetiyo.png} alt="Profil Pengembang" />
+                        <img src={fotoAnanda} alt="Profil Pengembang" />
                     </div>
                     <div className="info-profil">
                         <h3>Ananda Prasetiyo</h3>
@@ -298,7 +298,7 @@ const SeksiProfil = () => {
                 <div className="kartu-profil">
                     <div className="bingkai-foto-profil">
                         {/* Menggunakan variabel fotoDosen hasil import */}
-                        <img src={dosen.png} alt="Profil Dosen" />
+                        <img src={fotoDosen} alt="Profil Dosen" />
                     </div>
                     <div className="info-profil">
                         <h3>[Nama Dosen Pengampu]</h3>
