@@ -23,38 +23,34 @@ const Modal = ({ isOpen, onClose, title, children }) => {
 
 // --- KOMPONEN NAVBAR DENGAN HAMBURGER MENU ---
 const Navbar = ({ tabAktif, setTabAktif, bukaPetunjuk, bukaTujuan }) => {
-    const daftarMenu = ['Home', 'Materi', 'Vidio', 'Game', 'Quiz'];
+    const daftarMenu = ['Home', 'Materi', 'Vidio', 'Game', 'Quiz', 'Profil'];
     const [isMenuTerbuka, setIsMenuTerbuka] = useState(false);
 
     const navigasiKe = (menu) => {
         setTabAktif(menu);
-        setIsMenuTerbuka(false); // Tutup menu otomatis setelah klik di mobile
+        setIsMenuTerbuka(false);
     };
 
     return (
         <nav className="navbar">
             <div className="navbar-identitas">🌿 EcoMath SMP</div>
             
-            {/* Tombol Hamburger - Hanya muncul di Layar HP */}
             <button className="hamburger-tombol" onClick={() => setIsMenuTerbuka(!isMenuTerbuka)}>
                 {isMenuTerbuka ? '✕' : '☰'}
             </button>
 
-            {/* Menu Navigasi Adaptif */}
             <ul className={`navbar-menu ${isMenuTerbuka ? 'buka' : ''}`}>
                 {daftarMenu.map(menu => (
                     <li key={menu} className={`navbar-item ${tabAktif === menu ? 'aktif' : ''}`} onClick={() => navigasiKe(menu)}>
                         {menu}
                     </li>
                 ))}
-                {/* Tombol Info Tambahan di dalam list menu saat layar kecil */}
                 <li className="navbar-item-aksi-mobile">
                     <button className="tombol-info" onClick={() => { bukaPetunjuk(); setIsMenuTerbuka(false); }}>📋 Petunjuk</button>
                     <button className="tombol-info" onClick={() => { bukaTujuan(); setIsMenuTerbuka(false); }}>🎯 Tujuan</button>
                 </li>
             </ul>
 
-            {/* Tombol Aksi Kanan - Tersembunyi otomatis di layar HP */}
             <div className="navbar-aksi">
                 <button className="tombol-info" onClick={bukaPetunjuk}>📋 Petunjuk</button>
                 <button className="tombol-info" onClick={bukaTujuan}>🎯 Tujuan</button>
@@ -87,7 +83,7 @@ const SeksiHome = ({ bukaPetunjuk, bukaTujuan }) => (
     </section>
 );
 
-// --- SEKSI MATERI (DENGAN PENJELASAN KONSEP & TEMPAT FLIPBOOK) ---
+// --- SEKSI MATERI & FLIPBOOK ---
 const SeksiMateri = () => {
     const [angkaSatu, setAngkaSatu] = useState('');
     const [angkaDua, setAngkaDua] = useState('');
@@ -109,36 +105,26 @@ const SeksiMateri = () => {
     return (
         <section className="seksi-konten">
             <h2>Materi Pembelajaran: KPK & FPB</h2>
-            
-            {/* Penjelasan Ringkas Materi */}
             <div className="artikel-materi">
                 <div className="blok-bacaan">
                     <h3>1. Faktor Persekutuan Terbesar (FPB)</h3>
-                    <p>FPB adalah bilangan bulat positif terbesar yang dapat membagi habis dua bilangan atau lebih tanpa sisa. Dalam pelestarian lingkungan, FPB sangat berguna untuk membagi sekumpulan bibit tanaman ke berbagai wilayah panti alam secara adil dan merata.</p>
+                    <p>FPB adalah bilangan bulat positif terbesar yang membagi habis dua bilangan. Berguna untuk membagi bibit tanaman ke berbagai panti alam secara adil dan merata.</p>
                 </div>
                 <div className="blok-bacaan">
                     <h3>2. Kelipatan Persekutuan Terkecil (KPK)</h3>
-                    <p>KPK adalah bilangan kelipatan terkecil yang sama dari dua bilangan atau lebih. Konsep ini digunakan di dunia nyata untuk menentukan waktu pertemuan berkala, seperti menentukan kapan tim patroli hutan dan pelacak satwa liar akan berpapasan kembali di posko yang sama.</p>
+                    <p>KPK adalah bilangan kelipatan terkecil yang sama dari dua bilangan. Digunakan untuk menentukan waktu pertemuan berkala, seperti jadwal patroli hutan.</p>
                 </div>
             </div>
 
-            {/* TEMPAT UNTUK MENARUH FLIPBOOK KAMU */}
             <div className="kontainer-flipbook">
                 <h3>📚 E-Book / Flipbook Interaktif</h3>
-                <p>Silakan baca buku modul digital di bawah ini untuk pemahaman konsep matematika yang lebih mendalam:</p>
+                <p>Silakan baca buku modul digital di bawah ini:</p>
                 <div className="bingkai-flipbook-wrapper">
-                    {/* Kamu tinggal mengganti src di bawah ini dengan URL link flipbook milikmu (misal dari AnyFlip, Heyzine, FlipHTML5, dll) */}
-                    <iframe 
-                        src="https://online.fliphtml5.com/anandapras25/Buku_Ajar_KPK_FPB_Lingkungan/#p=6" 
-                        title="Flipbook Matematika EcoMath"
-                        className="iframe-flipbook"
-                        allowFullScreen={true}
-                    ></iframe>
+                    <iframe src="https://heyzine.com/flip-book/embed-placeholder-link" title="Flipbook Matematika EcoMath" className="iframe-flipbook" allowFullScreen={true}></iframe>
                 </div>
             </div>
 
-            {/* Alat Simulasi Pohon Faktor */}
-            <h3 style={{ marginTop: '2.5rem', color: 'var(--hijau-utama)' }}>🧮 Alat Analisis & Simulasi Angka</h3>
+            <h3 className="judul-simulasi">🧮 Alat Analisis & Simulasi Angka</h3>
             <div className="panel-kalkulator">
                 <input type="number" placeholder="Angka Pertama" value={angkaSatu} onChange={e => setAngkaSatu(e.target.value)} />
                 <input type="number" placeholder="Angka Kedua" value={angkaDua} onChange={e => setAngkaDua(e.target.value)} />
@@ -164,85 +150,154 @@ const SeksiMateri = () => {
 const SeksiVidio = () => (
     <section className="seksi-konten">
         <h2>Pustaka Video Belajar</h2>
-        <p className="sub-judul">Tonton penjelasan konsep matematika lingkungan di bawah ini:</p>
         <div className="grid-video">
-            <div className="bingkai-video">
-                <div className="ikon-play">▶</div>
-                <p>Metode Sengkedan & FPB</p>
-            </div>
-            <div className="bingkai-video">
-                <div className="ikon-play">▶</div>
-                <p>Konsep Pohon Faktor & KPK</p>
-            </div>
+            <div className="bingkai-video"><div className="ikon-play">▶</div><p>Metode Sengkedan & FPB</p></div>
+            <div className="bingkai-video"><div className="ikon-play">▶</div><p>Konsep Pohon Faktor & KPK</p></div>
         </div>
     </section>
 );
 
-// --- SEKSI GAME (SECTION PLACEHOLDER LINK) ---
-const SeksiGame = () => {
+// --- SEKSI GAME ---
+const SeksiGame = () => (
+    <section className="seksi-konten">
+        <h2>Misi Game Konservasi</h2>
+        <div className="kartu-game-tautan">
+            <div className="ikon-game-besar">🎮</div>
+            <h3>Siap Memulai Petualangan Lingkungan?</h3>
+            <a href="https://GANTI_DENGAN_LINK_GAME_KAMU.com" target="_blank" rel="noopener noreferrer" className="tombol-game-link">Mainkan Game Sekarang 🚀</a>
+        </div>
+    </section>
+);
+
+// --- SEKSI QUIZ DENGAN TIMER ---
+const SeksiQuiz = () => {
+    const bankSoal = [
+        { id: 1, tanya: "Berapakah FPB dari bilangan 12 dan 18?", opsi: [2, 3, 6, 9], benar: 6 },
+        { id: 2, tanya: "Berapakah KPK dari bilangan 8 dan 12?", opsi: [12, 16, 24, 48], benar: 24 },
+        { id: 3, tanya: "Berapakah FPB dari bilangan 20 dan 30?", opsi: [5, 10, 15, 60], benar: 10 },
+        { id: 4, tanya: "Berapakah KPK dari bilangan 4 dan 5?", opsi: [9, 10, 15, 20], benar: 20 },
+        { id: 5, tanya: "Lampu A menyala tiap 4 detik, Lampu B tiap 6 detik. Kapan menyala bersamaan? (KPK)", opsi: [10, 12, 24, 48], benar: 12 },
+        { id: 6, tanya: "Berapakah FPB dari 36 dan 48?", opsi: [6, 8, 12, 24], benar: 12 },
+        { id: 7, tanya: "Berapakah KPK dari bilangan 15 dan 20?", opsi: [30, 45, 60, 120], benar: 60 },
+        { id: 8, tanya: "Tali 16m dan 24m dipotong sama panjang dengan ukuran terbesar. Berapa ukurannya? (FPB)", opsi: [2, 4, 6, 8], benar: 8 },
+        { id: 9, tanya: "Berapakah FPB dari bilangan 15 dan 25?", opsi: [3, 5, 10, 15], benar: 5 },
+        { id: 10, tanya: "Berapakah KPK dari bilangan 6 dan 9?", opsi: [12, 15, 18, 36], benar: 18 }
+    ];
+
+    const WAKTU_PER_SOAL = 20;
+
+    const [soalAktifIndex, setSoalAktifIndex] = useState(0);
+    const [skorBenar, setSkorBenar] = useState(0);
+    const [waktuSisa, setWaktuSisa] = useState(WAKTU_PER_SOAL);
+    const [kuisSelesai, setKuisSelesai] = useState(false);
+
+    useEffect(() => {
+        if (kuisSelesai) return;
+
+        if (waktuSisa <= 0) {
+            lanjutKeSoalBerikutnya();
+            return;
+        }
+
+        const timer = setInterval(() => {
+            setWaktuSisa(prevWaktu => prevWaktu - 1);
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, [waktuSisa, kuisSelesai]);
+
+    const lanjutKeSoalBerikutnya = (jawabanDipilih = null) => {
+        if (jawabanDipilih !== null && jawabanDipilih === bankSoal[soalAktifIndex].benar) {
+            setSkorBenar(prev => prev + 1);
+        }
+
+        if (soalAktifIndex + 1 < bankSoal.length) {
+            setSoalAktifIndex(prev => prev + 1);
+            setWaktuSisa(WAKTU_PER_SOAL); 
+        } else {
+            setKuisSelesai(true); 
+        }
+    };
+
+    const restartKuis = () => {
+        setSoalAktifIndex(0);
+        setSkorBenar(0);
+        setWaktuSisa(WAKTU_PER_SOAL);
+        setKuisSelesai(false);
+    };
+
+    if (kuisSelesai) {
+        const skorAkhir = (skorBenar / bankSoal.length) * 100;
+        return (
+            <section className="seksi-konten teks-tengah">
+                <h2>🎉 Evaluasi Selesai!</h2>
+                <div className="panel-skor-quiz">
+                    <h3>Nilai Kamu:</h3>
+                    <span className="skor-besar">{skorAkhir}</span>
+                    <p>{skorAkhir >= 70 ? "Hebat! Kamu pahlawan lingkungan." : "Jangan menyerah, teruslah berlatih!"}</p>
+                    <button className="tombol-utama mt-10" onClick={restartKuis}>Coba Lagi</button>
+                </div>
+            </section>
+        );
+    }
+
+    const soalSekarang = bankSoal[soalAktifIndex];
+
     return (
         <section className="seksi-konten">
-            <h2>Misi Game Konservasi</h2>
-            <div className="kartu-game-tautan">
-                <div className="ikon-game-besar">🎮</div>
-                <h3>Siap Memulai Petualangan Lingkungan?</h3>
-                <p>Kamu akan diarahkan ke halaman game interaktif eksternal untuk menguji pemahaman KPK & FPB dalam pelestarian hutan.</p>
-                <a href="https://GANTI_DENGAN_LINK_GAME_KAMU.com" target="_blank" rel="noopener noreferrer" className="tombol-game-link">
-                    Mainkan Game Sekarang 🚀
-                </a>
+            <div className="header-evaluasi">
+                <h2>Evaluasi Mandiri</h2>
+                <div className={`indikator-waktu ${waktuSisa <= 5 ? 'waktu-kritis' : ''}`}>
+                    ⏳ Sisa Waktu: {waktuSisa} detik
+                </div>
+            </div>
+            
+            <div className="kartu-soal kuis-tengah">
+                <p className="teks-abu-bawah">Soal {soalAktifIndex + 1} dari {bankSoal.length}</p>
+                <h3 className="teks-soal-besar mb-20">{soalSekarang.tanya}</h3>
+                
+                <div className="grid-pilihan-kuis">
+                    {soalSekarang.opsi.map(o => (
+                        <button key={o} className="tombol-opsi-kuis" onClick={() => lanjutKeSoalBerikutnya(o)}>
+                            {o}
+                        </button>
+                    ))}
+                </div>
             </div>
         </section>
     );
 };
 
-// --- SEKSI QUIZ INTERAKTIF ---
-const SeksiQuiz = () => {
-    const bankSoal = [
-        { id: 1, tanya: "Berapakah FPB dari bilangan 12 dan 18?", opsi: [2, 3, 6, 9], benar: 6 },
-        { id: 2, tanya: "Berapakah KPK dari bilangan 8 dan 12?", opsi: [12, 16, 24, 48], benar: 24 }
-    ];
-
-    const [jawabanTerpilih, setJawabanTerpilih] = useState({});
-    const [skor, setSkor] = useState(null);
-
-    const pilihJawaban = (soalId, nilai) => {
-        setJawabanTerpilih({ ...jawabanTerpilih, [soalId]: nilai });
-    };
-
-    const hitungSkorQuiz = () => {
-        let nilaiBenar = 0;
-        bankSoal.forEach(soal => {
-            if (jawabanTerpilih[soal.id] === soal.benar) nilaiBenar++;
-        });
-        setSkor((nilaiBenar / bankSoal.length) * 100);
-    };
-
+// --- SEKSI PROFIL ---
+const SeksiProfil = () => {
     return (
         <section className="seksi-konten">
-            <h2>Evaluasi Mandiri: Kuis FPB & KPK</h2>
-            <div className="daftar-soal">
-                {bankSoal.map((soal, index) => (
-                    <div key={soal.id} className="kartu-soal">
-                        <p className="teks-soal"><b>Soal {index + 1}:</b> {soal.tanya}</p>
-                        <div className="pilihan-jawaban">
-                            {soal.opsi.map(o => (
-                                <button key={o} className={`tombol-opsi ${jawabanTerpilih[soal.id] === o ? 'terpilih' : ''}`} onClick={() => pilihJawaban(soal.id, o)}>
-                                    {o}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                ))}
-            </div>
-            <button className="tombol-utama" onClick={hitungSkorQuiz} style={{ marginTop: '1.5rem' }}>Kirim Jawaban</button>
+            <h2>Tentang Kami</h2>
+            <p className="sub-judul">Tim di balik pengembangan aplikasi EcoMath SMP</p>
             
-            {skor !== null && (
-                <div className="panel-skor-quiz">
-                    <h3>Hasil Evaluasi Kamu:</h3>
-                    <span className="skor-besar">{skor} / 100</span>
-                    <p>{skor >= 70 ? "🎉 Luar biasa! Kamu telah menguasai misi ini." : "💪 Jangan menyerah, ayo pelajari lagi materinya!"}</p>
+            <div className="grid-profil">
+                <div className="kartu-profil">
+                    <div className="bingkai-foto-profil">
+                        <img src="https://via.placeholder.com/150/4caf50/ffffff?text=Foto+Kamu" alt="Profil Pengembang" />
+                    </div>
+                    <div className="info-profil">
+                        <h3>Ananda Prasetiyo</h3>
+                        <p className="peran-profil">Pengembang Aplikasi & Mahasiswa</p>
+                        <p className="deskripsi-profil">Bertanggung jawab merancang antarmuka interaktif dan algoritma FPB/KPK berbasis pendidikan lingkungan hidup untuk meningkatkan kualitas pembelajaran matematika di tingkat SMP.</p>
+                    </div>
                 </div>
-            )}
+
+                <div className="kartu-profil">
+                    <div className="bingkai-foto-profil">
+                        <img src="https://via.placeholder.com/150/2e7d32/ffffff?text=Foto+Dosen" alt="Profil Dosen" />
+                    </div>
+                    <div className="info-profil">
+                        <h3>[Nama Dosen Pengampu]</h3>
+                        <p className="peran-profil">Dosen Pengampu Mata Kuliah</p>
+                        <p className="deskripsi-profil">Memberikan bimbingan, validasi materi pedagogik, serta arahan akademis dalam pengembangan proyek akhir teknologi pembelajaran ini.</p>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 };
@@ -259,6 +314,7 @@ export default function App() {
             case 'Vidio': return <SeksiVidio />;
             case 'Game': return <SeksiGame />;
             case 'Quiz': return <SeksiQuiz />;
+            case 'Profil': return <SeksiProfil />;
             default: return <SeksiHome bukaPetunjuk={() => setIsPetunjukOpen(true)} bukaTujuan={() => setIsTujuanOpen(true)} />;
         }
     };
@@ -271,25 +327,19 @@ export default function App() {
                 bukaPetunjuk={() => setIsPetunjukOpen(true)}
                 bukaTujuan={() => setIsTujuanOpen(true)}
             />
-            
             <main className="ruang-utama">{renderKonten()}</main>
 
-            {/* POPUP NOTIFICATION (MODALS) */}
-            <Modal isOpen={isPetunjukOpen} onClose={() => setIsPetunjukOpen(false)} title="📋 Petunjuk Penggunaan Aplikasi">
-                <ol style={{ paddingLeft: '1.2rem', lineHeight: '1.8' }}>
-                    <li>Gunakan <b>Navbar (Menu Navigasi)</b> di bagian atas untuk berpindah halaman sesuai keinginanmu.</li>
-                    <li>Di halaman <b>Materi</b>, baca ringkasan penjelasan serta flipbook digital. Masukkan dua angka di bagian bawah untuk melihat simulasi Pohon Faktor secara otomatis.</li>
-                    <li>Halaman <b>Vidio</b> berisi kumpulan materi visual, klik video untuk mulai menonton.</li>
-                    <li>Buka menu <b>Game</b> untuk mengakses tautan luar permainan konservasi alam.</li>
-                    <li>Uji kemampuanmu secara menyeluruh di menu <b>Quiz</b> dengan memilih salah satu jawaban yang paling tepat.</li>
+            <Modal isOpen={isPetunjukOpen} onClose={() => setIsPetunjukOpen(false)} title="📋 Petunjuk Penggunaan">
+                <ol className="daftar-modal">
+                    <li>Gunakan menu atas untuk bernavigasi.</li>
+                    <li>Baca materi dan masukkan angka untuk simulasi.</li>
+                    <li>Kerjakan Kuis secepat mungkin karena berbatas waktu!</li>
                 </ol>
             </Modal>
 
             <Modal isOpen={isTujuanOpen} onClose={() => setIsTujuanOpen(false)} title="🎯 Tujuan Pembelajaran">
-                <ul style={{ paddingLeft: '1.2rem', lineHeight: '1.8' }}>
-                    <li>Siswa mampu menentukan kelipatan persekutuan terkecil (KPK) dari dua bilangan dengan tepat.</li>
-                    <li>Siswa mampu menganalisis faktor persekutuan terbesar (FPB) dari dua bilangan secara mandiri.</li>
-                    <li>Siswa dapat mengaitkan pemanfaatan matematika dalam kehidupan nyata, khususnya dalam pembagian adil logistik lingkungan serta penjadwalan reboisasi hutan.</li>
+                <ul className="daftar-modal">
+                    <li>Siswa mampu menentukan KPK dan FPB dengan percaya diri.</li>
                 </ul>
             </Modal>
         </div>

@@ -310,3 +310,53 @@ input[type="number"]:focus { border-color: var(--hijau-muda); outline: none; }
     .bingkai-flipbook-wrapper { height: 250px; } /* Menyesuaikan HP layar sangat kecil */
     .angka-raksasa { font-size: 2rem; }
 }
+
+/* ======================================================= */
+/* UTILITAS & CLASS BARU (Hasil Pemisahan CSS)             */
+/* ======================================================= */
+
+/* Mengatur jarak dan bentuk daftar pada Pop-up Modal */
+.daftar-modal {
+    padding-left: 1.2rem;
+    line-height: 1.8;
+}
+
+/* Jarak margin atas dan bawah kustom */
+.mt-10 {
+    margin-top: 1rem;
+}
+
+.mb-20 {
+    margin-bottom: 2rem;
+}
+
+/* Mengatur posisi teks menjadi di tengah */
+.teks-tengah {
+    text-align: center;
+}
+
+/* Menyusun bagian atas (header) pada menu Kuis */
+.header-evaluasi {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* Gaya khusus untuk area dalam kartu soal kuis */
+.kuis-tengah {
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Teks bantu berwarna abu-abu */
+.teks-abu-bawah {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+/* Judul khusus pada halaman simulasi */
+.judul-simulasi {
+    margin-top: 2.5rem;
+    color: var(--hijau-utama);
+}
