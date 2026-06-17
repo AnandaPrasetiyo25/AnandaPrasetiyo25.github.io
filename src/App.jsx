@@ -169,7 +169,8 @@ const SeksiGame = () => (
         <div className="kartu-game-tautan">
             <div className="ikon-game-besar">🎮</div>
             <h3>Siap Memulai Petualangan Lingkungan?</h3>
-            <a href="https://GANTI_DENGAN_LINK_GAME_KAMU.com" target="_blank" rel="noopener noreferrer" className="tombol-game-link">Mainkan Game Sekarang 🚀</a>
+            <br/>
+            <a href="https://quiz.zep.us/en/play/AO17nY" target="_blank" rel="noopener noreferrer" className="tombol-game-link">Mainkan Game Sekarang 🚀</a>
         </div>
     </section>
 );
@@ -301,7 +302,7 @@ const SeksiProfil = () => {
                         <img src={fotoDosen} alt="Profil Dosen" />
                     </div>
                     <div className="info-profil">
-                        <h3>[Nama Dosen Pengampu]</h3>
+                        <h3>[Ibu Robia Astuti M.Pd]</h3>
                         <p className="peran-profil">Dosen Pengampu Mata Kuliah</p>
                         <p className="deskripsi-profil">Memberikan bimbingan, validasi materi pedagogik, serta arahan akademis dalam pengembangan proyek akhir teknologi pembelajaran ini.</p>
                     </div>
