@@ -151,13 +151,25 @@ const SeksiMateri = () => {
     );
 };
 
-// --- SEKSI VIDIO PEMBELAJARAN ---
 const SeksiVidio = () => (
     <section className="seksi-konten">
         <h2>Pustaka Video Belajar</h2>
+        <p className="sub-judul">Klik untuk menonton penjelasan metode FPB & KPK:</p>
         <div className="grid-video">
-            <div className="bingkai-video"><iframe width="560" height="315" src="https://www.youtube.com/embed/IUvVHcMjG60?si=Xi57W4L4DkLE8lRh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-            <div className="bingkai-video"><iframe width="560" height="315" src="https://www.youtube.com/embed/mfGZ6IjgQ7o?si=nacmFHSFxg_-X4zs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+            <div className="bingkai-video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/IUvVHcMjG60?si=Xi57W4L4DkLE8lRh" 
+                    title="Video 1" 
+                    allowFullScreen 
+                ></iframe>
+            </div>
+            <div className="bingkai-video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/mfGZ6IjgQ7o?si=nacmFHSFxg_-X4zs" 
+                    title="Video 2" 
+                    allowFullScreen 
+                ></iframe>
+            </div>
         </div>
     </section>
 );
