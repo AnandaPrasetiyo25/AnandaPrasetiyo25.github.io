@@ -156,8 +156,8 @@ const SeksiVidio = () => (
     <section className="seksi-konten">
         <h2>Pustaka Video Belajar</h2>
         <div className="grid-video">
-            <div className="bingkai-video"><div className="ikon-play">▶</div><p>Metode Sengkedan & FPB</p></div>
-            <div className="bingkai-video"><div className="ikon-play">▶</div><p>Konsep Pohon Faktor & KPK</p></div>
+            <div className="bingkai-video"><iframe width="560" height="315" src="https://www.youtube.com/embed/IUvVHcMjG60?si=Xi57W4L4DkLE8lRh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+            <div className="bingkai-video"><iframe width="560" height="315" src="https://www.youtube.com/embed/mfGZ6IjgQ7o?si=nacmFHSFxg_-X4zs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
         </div>
     </section>
 );
