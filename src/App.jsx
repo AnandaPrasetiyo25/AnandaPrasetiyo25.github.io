@@ -202,7 +202,7 @@ const SeksiQuiz = () => {
         { id: 10, tanya: "Berapakah KPK dari bilangan 6 dan 9?", opsi: [12, 15, 18, 36], benar: 18 }
     ];
 
-    const WAKTU_PER_SOAL = 20;
+    const WAKTU_PER_SOAL = 60;
 
     const [soalAktifIndex, setSoalAktifIndex] = useState(0);
     const [skorBenar, setSkorBenar] = useState(0);
@@ -351,17 +351,21 @@ export default function App() {
             />
             <main className="ruang-utama">{renderKonten()}</main>
 
-            <Modal isOpen={isPetunjukOpen} onClose={() => setIsPetunjukOpen(false)} title="📋 Petunjuk Penggunaan">
-                <ol className="daftar-modal">
-                    <li>Gunakan menu atas untuk bernavigasi.</li>
-                    <li>Baca materi dan masukkan angka untuk simulasi.</li>
-                    <li>Kerjakan Kuis secepat mungkin karena berbatas waktu!</li>
+            <Modal isOpen={isPetunjukOpen} onClose={() => setIsPetunjukOpen(false)} title="📋 Petunjuk Penggunaan Aplikasi">
+                <ol style={{ paddingLeft: '1.2rem', lineHeight: '1.8' }}>
+                    <li>Gunakan <b>Navbar (Menu Navigasi)</b> di bagian atas untuk berpindah halaman sesuai keinginanmu.</li>
+                    <li>Di halaman <b>Materi</b>, masukkan dua angka bulat positif untuk melihat simulasi Pohon Faktor secara otomatis.</li>
+                    <li>Halaman <b>Vidio</b> berisi kumpulan materi visual, klik video untuk mulai menonton.</li>
+                    <li>Buka menu <b>Game</b> untuk mengakses tautan luar permainan konservasi alam.</li>
+                    <li>Uji kemampuanmu secara menyeluruh di menu <b>Quiz</b> dengan memilih salah satu jawaban yang paling tepat.</li>
                 </ol>
             </Modal>
 
             <Modal isOpen={isTujuanOpen} onClose={() => setIsTujuanOpen(false)} title="🎯 Tujuan Pembelajaran">
-                <ul className="daftar-modal">
-                    <li>Siswa mampu menentukan KPK dan FPB dengan percaya diri.</li>
+                <ul style={{ paddingLeft: '1.2rem', lineHeight: '1.8' }}>
+                    <li>Siswa mampu menentukan kelipatan persekutuan terkecil (KPK) dari dua bilangan dengan tepat.</li>
+                    <li>Siswa mampu menganalisis faktor persekutuan terbesar (FPB) dari dua bilangan secara mandiri.</li>
+                    <li>Siswa dapat mengaitkan pemanfaatan matematika dalam kehidupan nyata, khususnya dalam pembagian adil logistik lingkungan serta penjadwalan reboisasi hutan.</li>
                 </ul>
             </Modal>
         </div>
